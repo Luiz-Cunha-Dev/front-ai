@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chat com IA
 
-## Getting Started
+Uma aplicação moderna de chat com inteligência artificial construída com Next.js, oferecendo uma experiência interativa e intuitiva para conversar com IA.
 
-First, run the development server:
+## Funcionalidades
 
+### 🎯 Chat Inteligente
+- Interface limpa e responsiva
+- Suporte a temas claro/escuro
+- Histórico de conversas
+- Limpeza rápida do chat (Ctrl+K)
+
+### 🎤 Reconhecimento de Voz
+- Comando por voz usando a Web Speech API
+- Suporte para português brasileiro
+- Feedback visual durante a gravação
+- Funcionamento automático em navegadores compatíveis
+
+### 📎 Upload de Arquivos para Contexto
+- Suporte para arquivos PDF e TXT
+- Extração automática de texto
+- Contexto invisível ao usuário (usado apenas pela IA)
+- Interface intuitiva para gerenciar arquivos
+
+### ⌨️ Atalhos de Teclado
+- `Enter`: Enviar mensagem
+- `Shift + Enter`: Quebrar linha
+- `Ctrl + K`: Limpar chat
+
+## Tecnologias Utilizadas
+
+- **Next.js 14** - Framework React
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização
+- **Lucide React** - Ícones
+- **PDF.js** - Extração de texto de PDFs
+- **Web Speech API** - Reconhecimento de voz
+
+## Instalação
+
+1. Clone o repositório:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [url-do-repositorio]
+cd front-ai
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-## Learn More
+## Estrutura do Projeto
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── api/chat/stream/route.ts    # API de chat
+│   └── ...
+├── components/
+│   ├── Chat.tsx                    # Componente principal
+│   ├── FileUpload.tsx             # Upload de arquivos
+│   └── ui/                        # Componentes UI
+├── hooks/
+│   ├── use-speech-recognition.ts   # Hook para voz
+│   ├── use-file-context.ts        # Hook para arquivos
+│   └── ...
+└── lib/
+    └── utils.ts                    # Utilitários
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Como Usar
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Chat Básico
+1. Digite sua mensagem no campo de entrada
+2. Pressione Enter ou clique no botão de envio
+3. Aguarde a resposta da IA
 
-## Deploy on Vercel
+### Reconhecimento de Voz
+1. Clique no ícone do microfone 🎤
+2. Fale sua mensagem
+3. O texto será automaticamente inserido no campo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Upload de Arquivos
+1. Clique no ícone de anexo 📎
+2. Selecione um arquivo PDF ou TXT
+3. O arquivo será processado e usado como contexto para a IA
+4. Para remover, clique no X ao lado do nome do arquivo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Configuração da API
+
+Configure sua API de chat no arquivo `src/app/api/chat/stream/route.ts`.
+
+## Deploy
+
+Para fazer deploy na Vercel:
+
+```bash
+npm run build
+vercel --prod
+```
+
+## Contribuição
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Aplicação Next.js em modo desenvolvimento
+  front-ai-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      target: development
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+    volumes:
+      # Hot reload no desenvolvimento
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    command: npm run dev
+    restart: unless-stopped
+    networks:
+      - front-ai-dev-network
+
+networks:
+  front-ai-dev-network:
+    driver: bridge
