@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         source: '/api/chat/:path*',
-        destination: 'http://168.138.148.63:3000/chat/:path*',
+        destination: 'http://129.148.34.13:3000/chat/:path*',
       },
     ];
   },
