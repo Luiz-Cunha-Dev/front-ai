@@ -1,5 +1,5 @@
 # Use a imagem oficial do Node.js como base
-FROM node:20-alpine AS base
+FROM node:22.16.0-alpine AS base
 
 # Instalar dependências apenas quando necessário
 FROM base AS deps
@@ -47,4 +47,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["npm", "run", "start"]
