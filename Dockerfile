@@ -1,50 +1,35 @@
-# Use a imagem oficial do Node.js como base
-FROM node:22.16.0-alpine AS base
+# Stage 1: Build the Next.js application
+FROM node:20-alpine AS builder
 
-# Instalar dependências apenas quando necessário
-FROM base AS deps
-# Verificar se libc6-compat pode ser necessário para algunas dependências
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copiar arquivos de dependências
-COPY package.json package-lock.json* ./
-RUN npm ci
+# Copy package.json and package-lock.json (or yarn.lock, pnpm-lock.yaml)
+COPY package.json yarn.lock* pnpm-lock.yaml* ./
+# Install dependencies
+RUN npm install --frozen-lockfile --production=false
 
-# Rebuild dos módulos nativos apenas se necessário
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Copy the rest of the application code
 COPY . .
 
-# Variáveis de ambiente para o build
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# Build da aplicação
+# Build the Next.js application
 RUN npm run build
 
-# Imagem de produção, copiar todos os arquivos e executar next
-FROM base AS runner
+# Stage 2: Create the production-ready image
+FROM node:20-alpine AS runner
+
 WORKDIR /app
 
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
+# Set environment variables for Next.js standalone output
+ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV production
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copiar arquivos públicos
+# Copy only the necessary files for standalone output
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Copiar os arquivos de build
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-
+# Expose the port Next.js runs on
 EXPOSE 3000
 
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-
-CMD ["npm", "run", "start"]
+# Start the Next.js application
+CMD ["node", "server.js"]
