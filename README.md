@@ -1,119 +1,119 @@
-# Chat com IA
+# AI Chat
 
-Uma aplicação moderna de chat com inteligência artificial construída com Next.js, oferecendo uma experiência interativa e intuitiva para conversar com IA.
+A modern AI chat application built with Next.js, offering an interactive and intuitive experience to converse with artificial intelligence.
 
-## Funcionalidades
+## Features
 
-### 🎯 Chat Inteligente
-- Interface limpa e responsiva
-- Suporte a temas claro/escuro
-- Histórico de conversas
-- Limpeza rápida do chat (Ctrl+K)
+### 🎯 Smart Chat
+- Clean and responsive interface
+- Light/dark theme support
+- Conversation history
+- Quick chat clearing (Ctrl+K)
 
-### 🎤 Reconhecimento de Voz
-- Comando por voz usando a Web Speech API
-- Suporte para português brasileiro
-- Feedback visual durante a gravação
-- Funcionamento automático em navegadores compatíveis
+### 🎤 Voice Recognition
+- Voice command using the Web Speech API
+- Support for Brazilian Portuguese
+- Visual feedback during recording
+- Automatic operation in compatible browsers
 
-### 📎 Upload de Arquivos para Contexto
-- Suporte para arquivos PDF e TXT
-- Extração automática de texto
-- Contexto invisível ao usuário (usado apenas pela IA)
-- Interface intuitiva para gerenciar arquivos
+### 📎 File Upload for Context
+- Support for PDF and TXT files
+- Automatic text extraction
+- Invisible context for the user (used only by the AI)
+- Intuitive interface to manage files
 
-### ⌨️ Atalhos de Teclado
-- `Enter`: Enviar mensagem
-- `Shift + Enter`: Quebrar linha
-- `Ctrl + K`: Limpar chat
+### ⌨️ Keyboard Shortcuts
+- `Enter`: Send message
+- `Shift + Enter`: New line
+- `Ctrl + K`: Clear chat
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Next.js 14** - Framework React
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS** - Estilização
-- **Lucide React** - Ícones
-- **PDF.js** - Extração de texto de PDFs
-- **Web Speech API** - Reconhecimento de voz
+- **Next.js 14** - React Framework
+- **TypeScript** - Static typing
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+- **PDF.js** - PDF text extraction
+- **Web Speech API** - Voice recognition
 
-## Instalação
+## Installation
 
-1. Clone o repositório:
+1. Clone the repository:
 ```bash
-git clone [url-do-repositorio]
+git clone [repository-url]
 cd front-ai
 ```
 
-2. Instale as dependências:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Execute o servidor de desenvolvimento:
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-4. Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── api/chat/stream/route.ts    # API de chat
+│   ├── api/chat/stream/route.ts    # Chat API
 │   └── ...
 ├── components/
-│   ├── Chat.tsx                    # Componente principal
-│   ├── FileUpload.tsx             # Upload de arquivos
-│   └── ui/                        # Componentes UI
+│   ├── Chat.tsx                    # Main component
+│   ├── FileUpload.tsx              # File upload
+│   └── ui/                         # UI components
 ├── hooks/
-│   ├── use-speech-recognition.ts   # Hook para voz
-│   ├── use-file-context.ts        # Hook para arquivos
+│   ├── use-speech-recognition.ts   # Voice hook
+│   ├── use-file-context.ts         # File hook
 │   └── ...
 └── lib/
-    └── utils.ts                    # Utilitários
+    └── utils.ts                    # Utilities
 ```
 
-## Como Usar
+## How to Use
 
-### Chat Básico
-1. Digite sua mensagem no campo de entrada
-2. Pressione Enter ou clique no botão de envio
-3. Aguarde a resposta da IA
+### Basic Chat
+1. Type your message in the input field
+2. Press Enter or click the send button
+3. Wait for the AI's response
 
-### Reconhecimento de Voz
-1. Clique no ícone do microfone 🎤
-2. Fale sua mensagem
-3. O texto será automaticamente inserido no campo
+### Voice Recognition
+1. Click the microphone icon 🎤
+2. Speak your message
+3. The text will be automatically inserted into the field
 
-### Upload de Arquivos
-1. Clique no ícone de anexo 📎
-2. Selecione um arquivo PDF ou TXT
-3. O arquivo será processado e usado como contexto para a IA
-4. Para remover, clique no X ao lado do nome do arquivo
+### File Upload
+1. Click the attachment icon 📎
+2. Select a PDF or TXT file
+3. The file will be processed and used as context for the AI
+4. To remove, click the X next to the file name
 
-## Configuração da API
+## API Configuration
 
-Configure sua API de chat no arquivo `src/app/api/chat/stream/route.ts`.
+Configure your chat API in the file [`src/app/api/chat/stream/route.ts`](src/app/api/chat/stream/route.ts).
 
 ## Deploy
 
-Para fazer deploy na Vercel:
+To deploy on Vercel:
 
 ```bash
 npm run build
 vercel --prod
 ```
 
-## Contribuição
+## Contributing
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Licença
+## License
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+This project is licensed under the MIT License. See the `LICENSE`
